@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manage Guards</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.header{
+    background: linear-gradient(135deg, #0d6efd, #4f46e5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container{
+    width: 95%;
+    margin: 25px auto;
+}
+
+.card{
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-danger{
+    background: red;
+    color: white;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    background: #4f46e5;
+    color: white;
+    padding: 12px;
+}
+
+td{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.delete{
+    background: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🛂 Manage Guards</h1>
+</div>
+
+<div class="container">
+
+    <!-- ADD GUARD -->
+    <div class="card">
+        <h2>➕ Add Guard</h2>
+
+        <form action="/add_guard" method="POST">
+
+            <input type="text" name="name" placeholder="Guard Name" required>
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button class="btn-primary" type="submit">
+                Add Guard
+            </button>
+
+        </form>
+    </div>
+
+    <!-- GUARD LIST -->
+    <div class="card">
+        <h2>📋 Guard List</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+            {% for g in guards %}
+
+            <tr>
+                <td>{{ g[0] }}</td>
+                <td>{{ g[1] }}</td>
+                <td>{{ g[2] }}</td>
+
+                <td>
+                    <a href="/delete_guard/{{ g[0] }}" class="delete">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

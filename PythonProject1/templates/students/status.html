@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gate Pass Status</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+    margin:0;
+}
+
+.header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    width:95%;
+    margin:30px auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+}
+
+th{
+    background:#0d6efd;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+.pending{
+    color:orange;
+    font-weight:bold;
+}
+
+.approved{
+    color:green;
+    font-weight:bold;
+}
+
+.rejected{
+    color:red;
+    font-weight:bold;
+}
+
+.back{
+    margin-top:20px;
+    text-align:center;
+}
+
+.back a{
+    text-decoration:none;
+    background:#0d6efd;
+    color:white;
+    padding:10px 20px;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>Gate Pass Status</h1>
+</div>
+
+<div class="container">
+
+<table>
+
+<tr>
+<th>Reason</th>
+<th>Destination</th>
+<th>Leaving Date</th>
+<th>Leaving Time</th>
+<th>Expected Return</th>
+<th>Status</th>
+<th>Faculty Remark</th>
+</tr>
+
+{% for pass in passes %}
+
+<tr>
+
+<td>{{ pass[0] }}</td>
+<td>{{ pass[1] }}</td>
+<td>{{ pass[2] }}</td>
+<td>{{ pass[3] }}</td>
+<td>{{ pass[4] }}</td>
+
+<td>
+
+{% if pass[5]=="Pending" %}
+<span class="pending">Pending</span>
+
+{% elif pass[5]=="Approved" %}
+<span class="approved">Approved</span>
+
+{% else %}
+<span class="rejected">Rejected</span>
+{% endif %}
+
+</td>
+
+<td>{{ pass[6] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="back">
+<a href="/student">Back to Dashboard</a>
+</div>
+
+</div>
+
+</body>
+</html>

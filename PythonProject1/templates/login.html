@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card mt-5">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-circle display-4 text-primary"></i>
+                    <h3 class="mt-2">Login</h3>
+                </div>
+                <form action="/" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" name="email" class="form-control" placeholder="name@college.edu" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Login As</label>
+                        <select name="role" class="form-select" required>
+                            <option value="" selected disabled>Select your role</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty/Teacher</option>
+                            <option value="guard">Security Guard</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

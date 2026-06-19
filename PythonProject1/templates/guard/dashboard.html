@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% block title %}Guard Dashboard{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <h4 class="mb-0"><i class="bi bi-shield-check me-2"></i>Security Guard Portal</h4>
+        <span class="badge bg-light text-success">Live Monitoring</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Student Details</th>
+                        <th>Travel Info</th>
+                        <th>Schedule</th>
+                        <th>Logs</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pass in passes %}
+                    <tr>
+                        <td>
+                            <div class="fw-bold">{{ pass[1] }}</div>
+                            <small class="text-muted">{{ pass[2] }} | {{ pass[3] }}</small>
+                        </td>
+                        <td>
+                            <div class="small"><strong>To:</strong> {{ pass[5] }}</div>
+                            <div class="small text-truncate" style="max-width: 150px;"><strong>Reason:</strong> {{ pass[4] }}</div>
+                        </td>
+                        <td>
+                            <div class="small"><i class="bi bi-calendar-event"></i> {{ pass[6] }}</div>
+                            <div class="small"><i class="bi bi-clock"></i> {{ pass[7] }} - {{ pass[8] }}</div>
+                        </td>
+                        <td>
+                            <div class="small">Exit: {{ pass[10] if pass[10] else '--:--' }}</div>
+                            <div class="small">Return: {{ pass[11] if pass[11] else '--:--' }}</div>
+                        </td>
+                        <td>
+                            {% if pass[9] == "Not Exited" %}
+                                <a href="/exit/{{ pass[0] }}" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-box-arrow-right"></i> Mark Exit
+                                </a>
+                            {% elif pass[9] == "Exited" %}
+                                <a href="/return/{{ pass[0] }}" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-box-arrow-in-left"></i> Mark Return
+                                </a>
+                            {% else %}
+                                <span class="badge bg-success text-uppercase">Completed</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

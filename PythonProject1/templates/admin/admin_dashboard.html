@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Admin Control Center</h2>
+    <a href="/reports" class="btn btn-outline-primary"><i class="bi bi-file-earmark-bar-graph"></i> Detailed Reports</a>
+</div>
+
+<div class="row g-3">
+    <!-- User Stats -->
+    <div class="col-md-3">
+        <div class="card bg-primary text-white h-100">
+            <div class="card-body">
+                <h6>Total Students</h6>
+                <h2 class="display-6">{{ students }}</h2>
+                <a href="/manage_students" class="text-white-50 text-decoration-none small">Manage <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white h-100">
+            <div class="card-body">
+                <h6>Total Faculty</h6>
+                <h2 class="display-6">{{ faculty }}</h2>
+                <a href="/manage_faculty" class="text-white-50 text-decoration-none small">Manage <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-secondary text-white h-100">
+            <div class="card-body">
+                <h6>Active Guards</h6>
+                <h2 class="display-6">{{ guards }}</h2>
+                <a href="/manage_guards" class="text-white-50 text-decoration-none small">Manage <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-dark text-white h-100">
+            <div class="card-body">
+                <h6>Total Passes</h6>
+                <h2 class="display-6">{{ passes }}</h2>
+                <a href="/all_passes" class="text-white-50 text-decoration-none small">View All <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pass Status Summary -->
+    <div class="col-md-4 mt-4">
+        <div class="card h-100">
+            <div class="card-header bg-white fw-bold">Current Pass Distribution</div>
+            <div class="card-body">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item d-flex justify-content-between">Pending <span class="badge bg-warning rounded-pill">{{ pending }}</span></div>
+                    <div class="list-group-item d-flex justify-content-between">Approved <span class="badge bg-success rounded-pill">{{ approved }}</span></div>
+                    <div class="list-group-item d-flex justify-content-between">Rejected <span class="badge bg-danger rounded-pill">{{ rejected }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

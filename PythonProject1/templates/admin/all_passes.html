@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>All Gate Passes</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.header{
+    background: linear-gradient(135deg, #0d6efd, #4f46e5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container{
+    width: 95%;
+    margin: 25px auto;
+}
+
+.card{
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    background: #4f46e5;
+    color: white;
+    padding: 12px;
+}
+
+td{
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+/* STATUS COLORS */
+.status-pending{
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+.status-approved{
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.status-rejected{
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.back a{
+    display:inline-block;
+    margin-top:15px;
+    text-decoration:none;
+    background:#111827;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>📄 All Gate Pass Requests</h1>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Student Name</th>
+    <th>Reason</th>
+    <th>Status</th>
+    <th>Date</th>
+</tr>
+
+{% for p in passes %}
+
+<tr>
+    <td>{{ p[0] }}</td>
+    <td>{{ p[1] }}</td>
+    <td>{{ p[2] }}</td>
+
+    <td>
+        {% if p[3]|lower == 'pending' %}
+            <span class="status-pending">Pending</span>
+        {% elif p[3]|lower == 'approved' %}
+            <span class="status-approved">Approved</span>
+        {% else %}
+            <span class="status-rejected">Rejected</span>
+        {% endif %}
+    </td>
+
+    <td>{{ p[4] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="back">
+    <a href="/admin">⬅ Back to Dashboard</a>
+</div>
+
+</div>
+
+</body>
+</html>

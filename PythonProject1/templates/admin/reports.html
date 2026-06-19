@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reports</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.header{
+    background: linear-gradient(135deg, #0d6efd, #4f46e5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container{
+    width: 95%;
+    margin: 25px auto;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card h2{
+    font-size:40px;
+    color:#4f46e5;
+}
+
+.card p{
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>📊 System Reports</h1>
+</div>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h2>{{ students }}</h2>
+<p>Total Students</p>
+</div>
+
+<div class="card">
+<h2>{{ faculty }}</h2>
+<p>Total Faculty</p>
+</div>
+
+<div class="card">
+<h2>{{ guards }}</h2>
+<p>Total Guards</p>
+</div>
+
+<div class="card">
+<h2>{{ passes }}</h2>
+<p>Total Gate Passes</p>
+</div>
+
+<div class="card">
+<h2>{{ pending }}</h2>
+<p>Pending</p>
+</div>
+
+<div class="card">
+<h2>{{ approved }}</h2>
+<p>Approved</p>
+</div>
+
+<div class="card">
+<h2>{{ rejected }}</h2>
+<p>Rejected</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

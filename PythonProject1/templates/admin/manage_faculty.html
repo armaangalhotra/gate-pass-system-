@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manage Faculty</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+/* HEADER */
+.header{
+    background: linear-gradient(135deg, #0d6efd, #4f46e5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* CONTAINER */
+.container{
+    width: 95%;
+    margin: 25px auto;
+}
+
+/* CARD */
+.card{
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+/* FORM */
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* BUTTONS */
+.btn-primary{
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-danger{
+    background: red;
+    color: white;
+}
+
+/* TABLE */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th{
+    background: #4f46e5;
+    color: white;
+    padding: 12px;
+}
+
+td{
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+/* DELETE BUTTON */
+.delete{
+    background: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* BACK BUTTON */
+.back a{
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    background: #111827;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>👨‍🏫 Manage Faculty</h1>
+</div>
+
+<div class="container">
+
+    <!-- ADD FACULTY FORM -->
+    <div class="card">
+        <h2>➕ Add Faculty</h2>
+
+        <form action="/add_faculty" method="POST">
+
+            <input type="text" name="name" placeholder="Faculty Name" required>
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="text" name="department" placeholder="Department" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button class="btn-primary" type="submit">
+                Add Faculty
+            </button>
+
+        </form>
+    </div>
+
+    <!-- FACULTY TABLE -->
+    <div class="card">
+        <h2>📋 Faculty List</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+
+            {% for faculty in faculties %}
+
+            <tr>
+                <td>{{ faculty[0] }}</td>
+                <td>{{ faculty[1] }}</td>
+                <td>{{ faculty[2] }}</td>
+                <td>{{ faculty[3] }}</td>
+
+                <td>
+                    <a href="/delete_faculty/{{ faculty[0] }}" class="delete">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+
+    <div class="back">
+        <a href="/admin">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>
